@@ -51,7 +51,7 @@ class Program
             var request = context.Request;
             var response = context.Response;
 
-
+            //GET
             if (request.Url.AbsolutePath == "/hello" && request.HttpMethod == "GET")
             {
                 var responseObj = new
@@ -66,6 +66,7 @@ class Program
                 response.ContentLength64 = buffer.Length;
                 await response.OutputStream.WriteAsync(buffer, 0, buffer.Length);
             }
+            //POST method
             else if(request.Url.AbsolutePath == "/hello" && request.HttpMethod == "POST"){
                 using (var reader = new StreamReader(request.InputStream, request.ContentEncoding)){
                     var requestBody = await reader.ReadToEndAsync();
@@ -74,6 +75,25 @@ class Program
                     if(newPerson != null){
                         people.Add(newPerson);
                         response.StatusCode = (int)HttpStatusCode.Created;
+                    }
+                }
+                //DELETE method
+            }else if(request.Url.AbsolutePath == "/hello" && request.HttpMethod == "DELETE"){
+                //Init the stream reader
+                using (var reader = new StreamReader(request.InputStream, request.ContentEncoding)){
+                    //set the request body so an input can be taken.
+                    var requestBody = await reader.ReadToEndAsync();
+                    //Deserialize the input into an identifier to use to delete a person
+                    var personToDelete = JsonSerializer.Deserialize<Person>(requestBody);
+
+                    if(personToDelete != null){
+                        var removed = people.RemoveAll(p => p.FirstName == personToDelete.FirstName && p.LastName == personToDelete.LastName);
+
+                        if(removed > 0){
+                            response.StatusCode = (int)HttpStatusCode.NoContent;
+                        }else{
+                            response.StatusCode = (int)HttpStatusCode.NotFound;
+                        }
                     }
                 }
             }
