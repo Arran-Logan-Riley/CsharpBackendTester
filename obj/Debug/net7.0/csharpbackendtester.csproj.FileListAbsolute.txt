@@ -1,0 +1,15 @@
+C:\Users\finnn\Desktop\csharpbackend\csharpbackendtester\bin\Debug\net7.0\csharpbackendtester.exe
+C:\Users\finnn\Desktop\csharpbackend\csharpbackendtester\bin\Debug\net7.0\csharpbackendtester.deps.json
+C:\Users\finnn\Desktop\csharpbackend\csharpbackendtester\bin\Debug\net7.0\csharpbackendtester.runtimeconfig.json
+C:\Users\finnn\Desktop\csharpbackend\csharpbackendtester\bin\Debug\net7.0\csharpbackendtester.dll
+C:\Users\finnn\Desktop\csharpbackend\csharpbackendtester\bin\Debug\net7.0\csharpbackendtester.pdb
+C:\Users\finnn\Desktop\csharpbackend\csharpbackendtester\obj\Debug\net7.0\csharpbackendtester.csproj.AssemblyReference.cache
+C:\Users\finnn\Desktop\csharpbackend\csharpbackendtester\obj\Debug\net7.0\csharpbackendtester.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\finnn\Desktop\csharpbackend\csharpbackendtester\obj\Debug\net7.0\csharpbackendtester.AssemblyInfoInputs.cache
+C:\Users\finnn\Desktop\csharpbackend\csharpbackendtester\obj\Debug\net7.0\csharpbackendtester.AssemblyInfo.cs
+C:\Users\finnn\Desktop\csharpbackend\csharpbackendtester\obj\Debug\net7.0\csharpbackendtester.csproj.CoreCompileInputs.cache
+C:\Users\finnn\Desktop\csharpbackend\csharpbackendtester\obj\Debug\net7.0\csharpbackendtester.dll
+C:\Users\finnn\Desktop\csharpbackend\csharpbackendtester\obj\Debug\net7.0\refint\csharpbackendtester.dll
+C:\Users\finnn\Desktop\csharpbackend\csharpbackendtester\obj\Debug\net7.0\csharpbackendtester.pdb
+C:\Users\finnn\Desktop\csharpbackend\csharpbackendtester\obj\Debug\net7.0\csharpbackendtester.genruntimeconfig.cache
+C:\Users\finnn\Desktop\csharpbackend\csharpbackendtester\obj\Debug\net7.0\ref\csharpbackendtester.dll
