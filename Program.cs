@@ -52,7 +52,7 @@ class Program
             var response = context.Response;
 
             //GET
-            if (request.Url.AbsolutePath == "/hello" && request.HttpMethod == "GET")
+            if (request.Url.AbsolutePath == "/get" && request.HttpMethod == "GET")
             {
                 var responseObj = new
                 {
@@ -67,7 +67,7 @@ class Program
                 await response.OutputStream.WriteAsync(buffer, 0, buffer.Length);
             }
             //POST method
-            else if(request.Url.AbsolutePath == "/hello" && request.HttpMethod == "POST"){
+            else if(request.Url.AbsolutePath == "/post" && request.HttpMethod == "POST"){
                 using (var reader = new StreamReader(request.InputStream, request.ContentEncoding)){
                     var requestBody = await reader.ReadToEndAsync();
                     var newPerson = JsonSerializer.Deserialize<Person>(requestBody);
@@ -78,7 +78,8 @@ class Program
                     }
                 }
                 //DELETE method
-            }else if(request.Url.AbsolutePath == "/hello" && request.HttpMethod == "DELETE"){
+            }else if(request.Url.AbsolutePath == "/delete" && request.HttpMethod == "DELETE"){
+                Console.WriteLine("Delete activated");
                 //Init the stream reader
                 using (var reader = new StreamReader(request.InputStream, request.ContentEncoding)){
                     //set the request body so an input can be taken.
@@ -93,6 +94,24 @@ class Program
                             response.StatusCode = (int)HttpStatusCode.NoContent;
                         }else{
                             response.StatusCode = (int)HttpStatusCode.NotFound;
+                        }
+                    }
+                }
+            }else if(request.Url.AbsolutePath == "/put" && request.HttpMethod == "PUT"){
+                Console.WriteLine("PUT has been activated");
+                using (var reader = new StreamReader(request.InputStream, request.ContentEncoding)){
+                    var requestBody = await reader.ReadToEndAsync();
+                    //Take in the person to replace as a JSON 
+                    var personToReplace = JsonSerializer.Deserialize<Person>(requestBody);
+                    if(personToReplace != null){
+                        var existingPerson = people.FirstOrDefault(p => p.FirstName == personToReplace.FirstName && p.LastName == personToReplace.LastName);
+                        //Check if existingPerson was successful
+                        if(existingPerson != null){
+                            existingPerson.FirstName = personToReplace.FirstName;
+                            existingPerson.LastName = personToReplace.LastName;
+                            existingPerson.Age = personToReplace.Age;
+                            existingPerson.Address = personToReplace.Address;
+                            response.StatusCode = (int)HttpStatusCode.OK;
                         }
                     }
                 }
